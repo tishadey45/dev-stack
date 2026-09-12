@@ -13,7 +13,7 @@ const Banner = () => {
           
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
             Build Your Ideal <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-600 to-pink-500">
               Development Stack!
             </span>
           </h1>
@@ -24,11 +24,11 @@ const Banner = () => {
             fits your <br /> next project.
           </p>
           <div className="flex gap-4">
-            <button className="btn bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-2xl px-4 lg:px-6 border-none">
+            <button className="btn bg-linear-to-r from-purple-600 to-pink-500 text-white rounded-2xl px-4 lg:px-6 border-none">
               Explore Technologies
             </button>
 
-            <button className="btn rounded-2xl p-[2px] bg-gradient-to-r from-purple-600 to-pink-500 border-none">
+            <button className="btn rounded-2xl p-0.5 bg-linear-to-r from-purple-600 to-pink-500 border-none">
               <span className="bg-base-100 rounded-[14px] px-4 lg:px-6 py-2">
                 Learn More
               </span>
