@@ -17,7 +17,7 @@ const Technology = ({ technologies }: TechnologyProps) => {
       <p className="text-gray-600 pt-4">
         Pick one technology per category to build your ideal stack.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pr-6 mt-6 mx-auto pl-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pr-6 mt-6 mx-auto pl-6 items-stretch">
         {technologiesData.map((tech) => (
           <TechnologyCard key={tech.id} technology={tech} />
         ))}

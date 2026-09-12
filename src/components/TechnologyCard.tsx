@@ -5,28 +5,29 @@ interface TechnologyCardProps {
   technology: ITechnology;
 }
 
-//  "id": "react",
-//     "name": "React",
-//     "category": "Frontend",
-//     "description": "A declarative, component-based JavaScript library for building modern user interfaces.",
-//     "icon": "https://icon.icepanel.io/Technology/svg/React.svg",
-//     "rating": 4.9,
-//     "difficulty": "Beginner-Friendly",
-//     "badge": "Popular"
 const TechnologyCard = ({ technology }: TechnologyCardProps) => {
-  console.log(technology);
   return (
-    <div className="card w-96 bg-base-100 shadow-sm">
+    <div className="w-96 h-full">
       <div
-        key={technology.name}
-        className="rounded-[14px] border border-[#E5EAF2] bg-white p-6 shadow-sm"
+        className="
+          h-full
+          flex
+          flex-col
+          rounded-[14px]
+          border
+          border-[#E5EAF2]
+          bg-white
+          p-6
+          shadow-sm
+        "
       >
+        {/* Icon + Badge */}
         <div className="flex items-start justify-between">
-          <div className="flex h-12 w-12 items-center justify-center text-[40px] ">
+          <div className="flex h-12 w-12 items-center justify-center">
             <img
               src={technology.icon}
               alt={technology.name}
-              className="h-12 w-12 rounded-full"
+              className="h-12 w-12 object-contain"
             />
           </div>
 
@@ -37,39 +38,61 @@ const TechnologyCard = ({ technology }: TechnologyCardProps) => {
           )}
         </div>
 
+        {/* Name */}
         <h2 className="mt-5 text-[23px] font-bold leading-tight text-[#101828]">
           {technology.name}
         </h2>
 
-        <p className="mt-2 min-h-18px text-[15px] leading-6 text-[#71809A]">
+        {/* Description */}
+        <p className="mt-2 text-[15px] leading-6 text-[#71809A]">
           {technology.description}
         </p>
 
-        <div className="my-5 h-px bg-[#EDF0F5]" />
+        {/* Bottom Content */}
+        <div className="mt-auto">
+          {/* Divider */}
+          <div className="my-5 h-px bg-[#EDF0F5]" />
 
-        <div className="flex min-h-7.5px items-center gap-3 text-sm text-[#71809A]">
-          <span className="rounded-md bg-[#F2F5F9] px-2.5 py-1 text-[#53627A]">
-            {technology.category}
-          </span>
+          {/* Category + Difficulty + Rating */}
+          <div className="flex items-center gap-3 text-sm text-[#71809A]">
+            <span className="rounded-md bg-[#F2F5F9] px-2.5 py-1 text-[#53627A]">
+              {technology.category}
+            </span>
 
-          <span className="whitespace-nowrap">{technology.difficulty}</span>
+            <span className="whitespace-nowrap">
+              {technology.difficulty}
+            </span>
 
-          <span className="ml-auto flex items-center gap-1 font-semibold text-[#475467]">
-            <Star
+            <span className="ml-auto flex items-center gap-1 font-semibold text-[#475467]">
+              <Star
                 size={16}
                 fill="#FDBB25"
                 color="#FDBB25"
               />
-            {technology.rating}
-          </span>
-        </div>
+              {technology.rating}
+            </span>
+          </div>
 
-        <button
-          type="button"
-          className="mt-5 w-full rounded-[10px] bg-[#080D1D] px-4 py-3 text-[15px] font-medium text-white transition hover:bg-[#171D2E]"
-        >
-          Add to Stack
-        </button>
+          {/* Button */}
+          <button
+            type="button"
+            className="
+              mt-5
+              w-full
+              rounded-[10px]
+              bg-[#080D1D]
+              px-4
+              py-3
+              text-[15px]
+              font-medium
+              text-white
+              transition
+              hover:bg-[#171D2E]
+            "
+          >
+            Add to Stack
+          </button>
+        </div>
       </div>
     </div>
   );
