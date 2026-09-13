@@ -5,7 +5,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <nav className="navbar bg-base-100 shadow-sm px-4">
+    <nav className="navbar sticky top-0 z-50  bg-base-100 shadow-sm px-4">
       <div className="container mx-auto">
         <div className="grid grid-cols-[auto_1fr_auto] lg:grid-cols-3 items-center">
           <div className="flex justify-start lg:hidden">

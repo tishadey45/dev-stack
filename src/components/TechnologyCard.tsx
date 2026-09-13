@@ -1,13 +1,14 @@
-import type { ITechnology } from "../types/technology";
 import { Star } from "lucide-react";
+import type { ITechnology } from "../types/technology";
 
 interface TechnologyCardProps {
   technology: ITechnology;
+  onSelect: (technology: ITechnology) => void;
 }
 
-const TechnologyCard = ({ technology }: TechnologyCardProps) => {
+const TechnologyCard = ({ technology, onSelect }: TechnologyCardProps) => {
   return (
-    <div className="w-96 h-full">
+    <div className="w-75 h-full">
       <div
         className="
           h-full
@@ -59,22 +60,17 @@ const TechnologyCard = ({ technology }: TechnologyCardProps) => {
               {technology.category}
             </span>
 
-            <span className="whitespace-nowrap">
-              {technology.difficulty}
-            </span>
+            <span className="whitespace-nowrap">{technology.difficulty}</span>
 
             <span className="ml-auto flex items-center gap-1 font-semibold text-[#475467]">
-              <Star
-                size={16}
-                fill="#FDBB25"
-                color="#FDBB25"
-              />
+              <Star size={16} fill="#FDBB25" color="#FDBB25" />
               {technology.rating}
             </span>
           </div>
 
           {/* Button */}
           <button
+            onClick={() => onSelect(technology)}
             type="button"
             className="
               mt-5
