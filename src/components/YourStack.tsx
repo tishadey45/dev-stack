@@ -34,17 +34,19 @@ const YourStack = ({
                 key={tech.id}
                 className="flex items-center justify-between border rounded-xl p-3"
               >
-                <div>
+                <div className="flex gap-3">
                   <img
                     src={tech.icon}
                     alt="technology"
                     className="h-12 w-12 object-contain"
                   />
-                  <h3 className="font-semibold">{tech.name}</h3>
-
-                  <p className="text-sm text-gray-500">{tech.category}</p>
+                  <div className="flex flex-col">
+                    <h3 className="font-semibold">{tech.name}</h3>
+                    <div>
+                      <p className="text-sm text-gray-500">{tech.category}</p>
+                    </div>
+                  </div>
                 </div>
-
                 <button
                   onClick={() => onRemove(tech.id)}
                   className="text-2xl text-gray-400 hover:text-red-500"
