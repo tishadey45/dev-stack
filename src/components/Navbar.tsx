@@ -31,7 +31,7 @@ const Navbar = () => {
             <li className="hover:text-purple-600 transition">Contact</li>
           </ul>
           <div className="flex justify-end items-center gap-2 lg:gap-4">
-            <button className="btn bg-purple-600 text-white rounded-full px-4 lg:px-6">
+            <button className="btn rounded-full px-3 py-2 text-sm font-medium text-gray-700 transition hover:text-pink-600">
               Sign In
             </button>
 
