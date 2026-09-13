@@ -11,6 +11,8 @@ const Technology = ({ technologies }: TechnologyProps) => {
   const technologiesData = use(technologies);
 
   const [selectedTechnologies, setSelectedTechnologies] = useState<ITechnology[]>([]);
+  
+
 
   // Add Technology
   const handleAddToStack = (technology: ITechnology) => {

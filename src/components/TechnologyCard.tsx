@@ -14,16 +14,18 @@ const TechnologyCard = ({
   onSelect,
 }: TechnologyCardProps) => {
   const [isSelected, setIsSelected] = useState(false);
+  const [isDuplicate, setIsDuplicate] = useState(false);
 
  const handleAdd = () => {
   if (isSelected) {
-    toast.error(`${technology.name} React is already in your stack!`);
+    toast.error(`${technology.name} is already in your stack!`);
+    setIsDuplicate(true);
     return;
   }
 
   onSelect(technology);
   setIsSelected(true);
-  toast.success(`${technology.name}  React added to stack!`);
+  toast.success(`${technology.name} added to stack!`);
 };
 
 
@@ -93,7 +95,7 @@ const TechnologyCard = ({
           <button
             onClick={handleAdd}
             type="button"
-            disabled={isSelected}
+            disabled={isDuplicate}
             className={`
               mt-5
               w-full
