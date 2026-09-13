@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import type { ITechnology } from "../types/technology";
 
 interface YourStackProps {
@@ -11,7 +12,15 @@ const YourStack = ({
   onRemove,
   onRemoveAll,
 }: YourStackProps) => {
-  console.log("YourStack selectedTechnologies:", selectedTechnologies);
+  const handleRemove = (id: string) => {
+    onRemove(id);
+    toast.success("Removed from your stack!");
+  };
+
+  const handleRemoveAll = () => {
+    onRemoveAll();
+    toast.success("All technologies removed from your stack!");
+  };
 
   return (
     <div className="card bg-base-100 w-96 shadow-lg">
@@ -24,7 +33,6 @@ const YourStack = ({
           Selected
         </p>
 
-        {/* Empty */}
         {selectedTechnologies.length === 0 ? (
           <p className="text-gray-600 mt-5">Your stack is empty.</p>
         ) : (
@@ -37,18 +45,19 @@ const YourStack = ({
                 <div className="flex gap-3">
                   <img
                     src={tech.icon}
-                    alt="technology"
+                    alt={tech.name}
                     className="h-12 w-12 object-contain"
                   />
+
                   <div className="flex flex-col">
                     <h3 className="font-semibold">{tech.name}</h3>
-                    <div>
-                      <p className="text-sm text-gray-500">{tech.category}</p>
-                    </div>
+                    <p className="text-sm text-gray-500">{tech.category}</p>
                   </div>
                 </div>
+
                 <button
-                  onClick={() => onRemove(tech.id)}
+                  onClick={() => handleRemove(tech.id)}
+                  type="button"
                   className="text-2xl text-gray-400 hover:text-red-500"
                 >
                   ×
@@ -58,10 +67,10 @@ const YourStack = ({
           </div>
         )}
 
-        {/* Remove All */}
         {selectedTechnologies.length > 0 && (
           <button
-            onClick={onRemoveAll}
+            onClick={handleRemoveAll}
+            type="button"
             className="btn btn-outline btn-error mt-5"
           >
             Remove All

@@ -1,4 +1,7 @@
+
 import { Star } from "lucide-react";
+import { useState } from "react";
+import toast from "react-hot-toast";
 import type { ITechnology } from "../types/technology";
 
 interface TechnologyCardProps {
@@ -6,7 +9,24 @@ interface TechnologyCardProps {
   onSelect: (technology: ITechnology) => void;
 }
 
-const TechnologyCard = ({ technology, onSelect }: TechnologyCardProps) => {
+const TechnologyCard = ({
+  technology,
+  onSelect,
+}: TechnologyCardProps) => {
+  const [isSelected, setIsSelected] = useState(false);
+
+ const handleAdd = () => {
+  if (isSelected) {
+    toast.error(`${technology.name} React is already in your stack!`);
+    return;
+  }
+
+  onSelect(technology);
+  setIsSelected(true);
+  toast.success(`${technology.name}  React added to stack!`);
+};
+
+
   return (
     <div className="w-75 h-full">
       <div
@@ -51,7 +71,6 @@ const TechnologyCard = ({ technology, onSelect }: TechnologyCardProps) => {
 
         {/* Bottom Content */}
         <div className="mt-auto">
-          {/* Divider */}
           <div className="my-5 h-px bg-[#EDF0F5]" />
 
           {/* Category + Difficulty + Rating */}
@@ -60,7 +79,9 @@ const TechnologyCard = ({ technology, onSelect }: TechnologyCardProps) => {
               {technology.category}
             </span>
 
-            <span className="whitespace-nowrap">{technology.difficulty}</span>
+            <span className="whitespace-nowrap">
+              {technology.difficulty}
+            </span>
 
             <span className="ml-auto flex items-center gap-1 font-semibold text-[#475467]">
               <Star size={16} fill="#FDBB25" color="#FDBB25" />
@@ -70,23 +91,27 @@ const TechnologyCard = ({ technology, onSelect }: TechnologyCardProps) => {
 
           {/* Button */}
           <button
-            onClick={() => onSelect(technology)}
+            onClick={handleAdd}
             type="button"
-            className="
+            disabled={isSelected}
+            className={`
               mt-5
               w-full
               rounded-[10px]
-              bg-[#080D1D]
               px-4
               py-3
               text-[15px]
               font-medium
               text-white
               transition
-              hover:bg-[#171D2E]
-            "
+              ${
+                isSelected
+                  ? "cursor-not-allowed bg-gray-400"
+                  : "bg-[#080D1D] hover:bg-[#171D2E]"
+              }
+            `}
           >
-            Add to Stack
+            {isSelected ? "✓ Added to Stack" : "Add to Stack"}
           </button>
         </div>
       </div>
@@ -95,3 +120,5 @@ const TechnologyCard = ({ technology, onSelect }: TechnologyCardProps) => {
 };
 
 export default TechnologyCard;
+
+
